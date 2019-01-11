@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Zerbow.Views.RouteDetails"
+             xmlns:ic="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
+           
+             NavigationPage.TitleIcon="Zerbpw.png">
+
+
+
+  
+    <ScrollView>
+        <StackLayout >
+            <StackLayout >
+               
+                <StackLayout Orientation="Horizontal">
+
+                    <ic:CircleImage BorderColor="Black" x:Name="profileImage"  WidthRequest="100"></ic:CircleImage>
+                    <StackLayout VerticalOptions="Center" Padding="15,0,0,0" >
+                        <Label x:Name="nameLabel" Style="{StaticResource  ProfileNameLabel}" ></Label>
+                      
+                    </StackLayout>
+
+                </StackLayout>
+                <Label Text="Route Information" Style="{StaticResource ProfileNameLabel}"></Label>
+                <Label x:Name="carinfo" Text="CarModel" Style="{StaticResource ProfileTagLabel}" ></Label>
+       
+
+                <Label x:Name="descriptionLabel" Text="Description" Style="{StaticResource ProfileTagLabel}" ></Label>
+                <Label x:Name="departureLabel" Text="Departure" Style="{StaticResource  ProfileTagLabel}" ></Label>
+                <Label x:Name="seatsLabel" Text="Seats" Style="{StaticResource StatsNumberLabel}"></Label>
+
+                <Button  Text="Show Starting point" Style="{StaticResource buttonActionStyle }" Clicked="OnStartingPoint"></Button>
+                <Button  Text="Show Ending point" Style="{StaticResource buttonActionStyle}" Clicked="OnEndingPoint"></Button>
+
+                <ActivityIndicator x:Name="activityIndicator"></ActivityIndicator>
+
+                <Button x:Name="reserveButton" Style="{StaticResource buttonSuccessStyle}"   Text="Reserve seat" Clicked="OnReserved" IsVisible="False"></Button>
+                <Button x:Name="cancelButton" Style="{StaticResource buttonCancelStyle}" Text="Cancel Reservation" Clicked="OnCancelReservation"  IsVisible="False"></Button>
+            </StackLayout>
+        </StackLayout>
+
+
+    </ScrollView>
+</ContentPage>

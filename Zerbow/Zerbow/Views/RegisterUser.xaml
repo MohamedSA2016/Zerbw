@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Zerbow.Views.RegisterUser"
+             BackgroundColor="#894183"
+            NavigationPage.HasBackButton="False" >
+
+
+
+    <RelativeLayout>
+        <Image Opacity="0.5" Aspect="AspectFill" Source="SignImg.jpg" RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,Property=Width}" RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent,Property=Height}"/>
+        <StackLayout 
+                     RelativeLayout.HeightConstraint="{ConstraintExpression 
+				Type=RelativeToParent,
+				Property=Height,
+				Factor=0.2}"
+                     RelativeLayout.WidthConstraint="{ConstraintExpression
+				Type=RelativeToParent,
+				Property=Width,
+				Factor=1}"
+                     HorizontalOptions="Center" VerticalOptions="Center">
+            <StackLayout.GestureRecognizers>
+                <TapGestureRecognizer Tapped="Gallary"/>
+            </StackLayout.GestureRecognizers>
+            <Image x:Name="image" Aspect="AspectFill" Source="account_box.png" HorizontalOptions="Center" VerticalOptions="Center"/>
+            <Label Text="Select Image" FontSize="Large" TextColor="#F8EEE7" HorizontalOptions="End" VerticalOptions="End"/>
+        </StackLayout>
+
+        <StackLayout Padding="5"
+                     RelativeLayout.WidthConstraint="{ConstraintExpression
+				Type=RelativeToParent,
+				Property=Width,
+				Factor=1}"
+                     
+                     RelativeLayout.YConstraint="{ConstraintExpression
+				Type=RelativeToParent,
+				ElementName=logolayout,
+				Property=Height,
+				Factor=0.35
+				}">
+            
+            <StackLayout Orientation="Horizontal">
+                <Image Source="AccountName.png" Aspect="AspectFit"/>
+                <Entry Keyboard="Text" Placeholder="User Name" x:Name="firstname" TextColor="White" Style="{StaticResource EntryLogin}" HorizontalOptions="FillAndExpand"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Image Source="Email.png" Aspect="AspectFit"/>
+                <Entry Keyboard="Email" Placeholder="Email" x:Name="email" TextColor="White" Style="{StaticResource EntryLogin}" HorizontalOptions="FillAndExpand"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Image Source="Phone.png" Aspect="AspectFit"/>
+                <Entry Keyboard="Numeric" Placeholder="Phone" x:Name="phone" TextColor="White" Style="{StaticResource EntryLogin}" HorizontalOptions="FillAndExpand"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Image Source="Bassword.png" Aspect="AspectFit"/>
+                <Entry Keyboard="Text" Placeholder="Password" IsPassword="True" TextColor="White" Style="{StaticResource EntryLogin}" x:Name="password" HorizontalOptions="FillAndExpand"/>
+            </StackLayout>
+            <Button Text="Create Account" Clicked="Register" x:Name="regbtn"  BackgroundColor="#49274A" BorderRadius="25" TextColor="#F8EEE7" HorizontalOptions="Center"/>
+        </StackLayout>
+       
+    </RelativeLayout>
+</ContentPage>

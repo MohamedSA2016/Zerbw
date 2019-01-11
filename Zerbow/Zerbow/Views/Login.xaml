@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Zerbow.Views.Login"  
+             BackgroundColor="#58D68D"
+               >
+  
+    <RelativeLayout>
+        <Image Opacity="0.3" Aspect="AspectFill" Source="img.jpg" RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,Property=Width}" RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent,Property=Height}"/>
+        <Grid RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,Property=Width}" RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent,Property=Height}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0" HorizontalOptions="Center" VerticalOptions="Start">
+                <Image x:Name="image" Aspect="AspectFit" Source="NewLogo.png" HorizontalOptions="Center" Grid.Row="0"/>
+            </Grid>
+            
+            <StackLayout VerticalOptions="CenterAndExpand" Grid.Row="1" Margin="30" x:Name="logolayout" RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent,Property=Height,Factor=0.5}" RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,Property=Width,Factor=1}">
+                <Label TextColor="White" Text="User Name"/>
+                <Entry Keyboard="Email" x:Name="email" TextColor="White" />
+                <Label TextColor="White" Text="Password"/>
+                <Entry Keyboard="Text" x:Name="password" IsPassword="True"  TextColor="White"/>
+                <ActivityIndicator x:Name="activityIndicator" Color="White" IsRunning="False"></ActivityIndicator>
+                <Button Image="Next.png" HeightRequest="50" WidthRequest="50" Clicked="SignIn" BackgroundColor="White" BorderRadius="100" HorizontalOptions="Center"/>
+            </StackLayout>
+            <Button Text="Sign-up For An Account" BackgroundColor="#FF" Clicked="SignUp" TextColor="#F8EEE7" HorizontalOptions="Center" Grid.Row="2"/>
+
+        </Grid>
+    </RelativeLayout>
+  
+</ContentPage>

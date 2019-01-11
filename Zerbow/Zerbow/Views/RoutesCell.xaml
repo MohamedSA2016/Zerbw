@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ViewCell xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Zerbow.Views.RoutesCell">
+
+
+    <StackLayout Orientation="Horizontal"  Spacing="10" BackgroundColor="White" Padding="10">
+        <Image x:Name="imageRoute" Source="Zerbow.png" Aspect="AspectFill" WidthRequest="75" ></Image>
+        <StackLayout Orientation="Vertical" VerticalOptions="Center">
+            <Label x:Name="fromLabel" TextColor="Blue" VerticalOptions="Center" FontSize="Medium"></Label>
+            <Label x:Name="toLabel" TextColor="Green" VerticalOptions="Center" FontSize="Medium"></Label>
+        </StackLayout>
+    </StackLayout>
+</ViewCell>
