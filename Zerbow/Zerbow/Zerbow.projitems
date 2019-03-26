@@ -16,12 +16,12 @@
     <Compile Include="$(MSBuildThisFileDirectory)App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Behaviors\RatingBehavior.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ExtMap.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Models\Cars.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Models\CustomPin.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Imgur.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\MenuItemNav.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Reservations.cs" />
@@ -170,14 +170,5 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Images\CurvedMask.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Images\Call.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Images\HeaderBackground.png" />
   </ItemGroup>
 </Project>

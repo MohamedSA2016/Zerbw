@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
-
+using Zerbow.Views;
 namespace Zerbow
 {
     public partial class MainPage : ContentPage
@@ -12,6 +12,9 @@ namespace Zerbow
         public MainPage()
         {
             InitializeComponent();
+            
         }
+
+        
     }
 }

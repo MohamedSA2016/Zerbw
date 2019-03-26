@@ -28,6 +28,11 @@
             <Button Text="Sign-up For An Account" BackgroundColor="#FF" Clicked="SignUp" TextColor="#F8EEE7" HorizontalOptions="Center" Grid.Row="2"/>
 
         </Grid>
+        <Label Grid.Row="1" Margin="10" 
+               HorizontalOptions="Center"
+               Text="Disconnected" 
+               x:Name="LabelConnection" 
+               Opacity="0"/>
     </RelativeLayout>
-  
+            
 </ContentPage>

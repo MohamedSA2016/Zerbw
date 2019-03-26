@@ -151,7 +151,7 @@ namespace Zerbow.Views
             {
                 var locator = CrossGeolocator.Current;
                 locator.DesiredAccuracy = 50;
-                var position = await locator.GetPositionAsync();
+                var position = await locator.GetPositionAsync(TimeSpan.FromSeconds(10),null , false);
                 var pos = new Position(position.Latitude, position.Longitude);
                 myMap.MoveToRegion(new MapSpan(pos, 0.01, 0.01));
                 stackMap.Children.Add(myMap);

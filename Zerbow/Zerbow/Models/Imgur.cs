@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Zerbow.Models
 {
-   public class Imgur
+    class Imgur
     {
         public class Data
         {

@@ -79,7 +79,7 @@ namespace Zerbow.Views
 
             usersRoutes = from r in routesReservations
                           join u in userList on r.Id_User equals u.ID
-                          select new UserRoute { IdRoute = r.Id, ResourceName = u.ResourceName, From = r.From, To = r.To };
+                          select new UserRoute { IdRoute = r.Id, Photo = u.Photo, From = r.From, To = r.To };
 
             routesListView.ItemsSource = usersRoutes;
 
@@ -109,7 +109,7 @@ namespace Zerbow.Views
                 IEnumerable<UserRoute> usersRoutes = from r in routesList
                                                      join u in userList on r.Id_User equals u.ID
                                                      where (r.From.ToLower().Contains(e.NewTextValue.ToLower()) || r.To.ToLower().Contains(e.NewTextValue.ToLower()))
-                                                     select new UserRoute() { IdRoute = r.Id, ResourceName = u.ResourceName, From = r.From, To = r.To };
+                                                     select new UserRoute() { IdRoute = r.Id, Photo = u.Photo, From = r.From, To = r.To };
                 routesListView.ItemsSource = usersRoutes;
             }
         }

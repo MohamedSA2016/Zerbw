@@ -5,8 +5,11 @@
 	<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 	<uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
 	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+  <uses-permission android:name="android.permission.WAKE_LOCK" />
+
 	<uses-permission android:name="android.permission.CALL_PHONE" />
 	<application android:label="Zerbow.Android" android:icon="@drawable/Zerbow">
-		<meta-data android:name="com.google.android.maps.v2.API_KEY" android:value="AIzaSyAWASkDXfDdXA183Em9n5F05nbMCnHr5W8" />
+		<meta-data android:name="com.google.android.maps.v2.API_KEY" android:value="AIzaSyAY40nzYmOwYxsrRjO27upaUFhKUM8x0hw" />
+
 	</application>
 </manifest>

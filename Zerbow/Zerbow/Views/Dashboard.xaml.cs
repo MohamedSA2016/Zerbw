@@ -32,7 +32,7 @@ namespace Zerbow.Views
 
             reservationsList = new List<Reservations>();
 
-            routesListView.ItemTemplate = new DataTemplate(typeof(RoutesCell));
+           
 
             routesListView.ItemTapped += RoutesListView_ItemTapped;
 
@@ -49,6 +49,7 @@ namespace Zerbow.Views
 
         private async void Reservations(object obj)
         {
+
             await Navigation.PushAsync(new ReservationsView());
         }
 
@@ -83,7 +84,7 @@ namespace Zerbow.Views
             
           
           await Navigation.PushAsync(new RouteDetails(userRoute.IdRoute));
-
+                
            
           
         }
@@ -124,7 +125,7 @@ namespace Zerbow.Views
 
             usersRoutes = from r in routesList
                           join u in userList on r.Id_User equals u.ID
-                          select new UserRoute { IdRoute = r.Id, ResourceName = u.ResourceName, From = r.From, To = r.To ,carModel = r.CarModel };
+                          select new UserRoute { IdRoute = r.Id, Photo = u.Photo, From = r.From, To = r.To };
 
             routesListView.ItemsSource = usersRoutes;
 
@@ -142,20 +143,28 @@ namespace Zerbow.Views
         {
             if (!string.IsNullOrWhiteSpace(e.NewTextValue))
             {
-                routesListView.ItemsSource =
-                    routesList.Where(
-                        route => route.From.ToLower().Contains(e.NewTextValue.ToLower()) || route.To.ToLower().Contains(e.NewTextValue.ToLower()));
+
+                IEnumerable<UserRoute> usersRoutes = from r in routesList
+                                                     join u in userList on r.Id_User equals u.ID
+                                                     where (r.From.ToLower().Contains(e.NewTextValue.ToLower()) || r.To.ToLower().Contains(e.NewTextValue.ToLower()))
+                                                     select new UserRoute() { IdRoute = r.Id, Photo = u.Photo, From = r.From, To = r.To };
+                routesListView.ItemsSource = usersRoutes;
             }
             else
             {
-                routesListView.ItemsSource = routesList;
+                routesListView.ItemsSource = usersRoutes;
             }
         }
 
-        private  void LogOut(object sender, EventArgs e)
+        private async  void LogOut(object sender, EventArgs e)
         {
-            Application.Current.MainPage = new NavigationPage(new Login());
-         
+            bool r = await DisplayAlert("Log Out", currentUser.Name +"Are you Sure to log Out", "Accept", "Cancel");
+            if(r==true)
+            {
+                Application.Current.MainPage = new NavigationPage(new Login());
+
+            }
+
         }
 
         

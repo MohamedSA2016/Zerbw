@@ -1,29 +1,31 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Zerbow.Models;
 using Zerbow.Services;
-
+using Xamarin.Essentials;                       
 namespace Zerbow.Views
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
+    [XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class Login : ContentPage
 	{
-		public Login ()
+     
+
+
+        public Login ()
 		{
 			InitializeComponent ();
+            
             NavigationPage.SetHasNavigationBar(this, false);
         }
 
         private async void SignIn(object sender, EventArgs e)
         {
+           
             string email = this.email.Text;
             string password = this.password.Text;
+
+          
             var user = new Users
             {
                 Email = email,
@@ -39,8 +41,13 @@ namespace Zerbow.Views
 
                 if (userResponse != null && userResponse.Email.Equals(email, StringComparison.Ordinal) && userResponse.Password.Equals(password, StringComparison.Ordinal))
                 {
-                    Application.Current.Properties["user"] = userResponse;
-                    Application.Current.MainPage = new NavigationPage(new MenuPage (userResponse));
+                  
+                  
+                        Application.Current.Properties["user"] = userResponse;
+                        Application.Current.MainPage = new NavigationPage(new MenuPage(userResponse));
+                
+                   
+                   
                 }
                 else
                 {
@@ -57,6 +64,10 @@ namespace Zerbow.Views
             }
 
         }
+      
+
+
+
 
         private async void SignUp(object sender, EventArgs e)
         {

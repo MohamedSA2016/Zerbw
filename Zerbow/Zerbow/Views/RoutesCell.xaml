@@ -1,14 +1,46 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ViewCell xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Zerbow.Views.RoutesCell">
+             x:Class="Zerbow.Views.RoutesCell"
+           xmlns:ic="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin">
 
 
-    <StackLayout Orientation="Horizontal"  Spacing="10" BackgroundColor="White" Padding="10">
-        <Image x:Name="imageRoute" Source="Zerbow.png" Aspect="AspectFill" WidthRequest="75" ></Image>
-        <StackLayout Orientation="Vertical" VerticalOptions="Center">
-            <Label x:Name="fromLabel" TextColor="Blue" VerticalOptions="Center" FontSize="Medium"></Label>
-            <Label x:Name="toLabel" TextColor="Green" VerticalOptions="Center" FontSize="Medium"></Label>
-        </StackLayout>
-    </StackLayout>
+
+
+
+
+  
+    
+    
+    <Grid BackgroundColor="#58D68D" ColumnSpacing="0" RowSpacing="0" Padding="20,0,10,0" VerticalOptions="Center">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+
+        </Grid.ColumnDefinitions>
+        <AbsoluteLayout >
+            <BoxView AbsoluteLayout.LayoutFlags="XProportional, HeightProportional" AbsoluteLayout.LayoutBounds=".5,0,2,1.09" WidthRequest="2" 
+					VerticalOptions="Fill" 
+					HorizontalOptions="FillAndExpand" BackgroundColor="White"/>
+
+        </AbsoluteLayout>
+        <Image HorizontalOptions="Center" Aspect="AspectFit" WidthRequest="48" HeightRequest="48" VerticalOptions="Center" Source="movies_circle.png"/>
+        <Grid Grid.Column="1" BackgroundColor="Transparent" VerticalOptions="Center" Margin="12">
+            <ic:CircleImage x:Name="imageRoute"  BorderColor="#58D68D" BorderThickness="1"  Aspect="AspectFill" WidthRequest="50" HeightRequest="50"/>
+            <StackLayout Grid.Column="1" VerticalOptions="Center" Padding="2" Spacing="5">
+                <Label x:Name="fromLabel" TextColor="White" FontAttributes="Bold" FontSize="Small"/>
+                <Label x:Name="toLabel" TextColor="White" FontAttributes="Bold" FontSize="Small"/>
+
+            </StackLayout>
+
+        </Grid>
+
+    </Grid>
+
+
+
+
+
+
 </ViewCell>

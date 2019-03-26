@@ -65,23 +65,23 @@ namespace Zerbow.Views
             {
                 newRoute = (Routes)Application.Current.Properties["route"];
 
-                if (!string.IsNullOrEmpty(newRoute.From_Latitude))
+                if (!string.IsNullOrEmpty(newRoute.From))
                     startingPointButton.Text = "Change Starting point";
-                if (!string.IsNullOrEmpty(newRoute.To_Latitude))
+                if (!string.IsNullOrEmpty(newRoute.To))
                     endingPointButton.Text = "Change Ending point";
             }
         }
 
-        public async void OnStartingPoint(object sender, EventArgs e)
+        public  void OnStartingPoint(object sender, EventArgs e)
         {
-            savePoints = true;
-            await Navigation.PushAsync(new MapStartingPoint());
+            //savePoints = true;
+            //await Navigation.PushAsync(new MapStartingPoint());
         }
 
-        public async void OnEndingPoint(object sender, EventArgs e)
+        public  void OnEndingPoint(object sender, EventArgs e)
         {
-            savePoints = true;
-            await Navigation.PushAsync(new MapEndingPoint());
+            //savePoints = true;
+            //await Navigation.PushAsync(new MapEndingPoint());
         }
 
         public void OnCarPicker(object sender, EventArgs e)
@@ -100,37 +100,31 @@ namespace Zerbow.Views
             }
             else
             {
-                if (string.IsNullOrEmpty((properties["route"] as Routes).From_Latitude) ||
-                    string.IsNullOrEmpty((properties["route"] as Routes).To_Latitude))
+                if (string.IsNullOrEmpty(startingNameEntry.Text) || string.IsNullOrEmpty(endingNameEntry.Text) ||
+                   string.IsNullOrEmpty(commentsEditor.Text))
                 {
-                    await DisplayAlert("Error", "Select points in map", "accept");
+                    await DisplayAlert("Error", "fill blank fields", "accept");
                 }
                 else
                 {
-                    if (string.IsNullOrEmpty(startingNameEntry.Text) || string.IsNullOrEmpty(endingNameEntry.Text) ||
-                    string.IsNullOrEmpty(commentsEditor.Text))
+                    if (string.IsNullOrEmpty(seatsEntry.Text))
                     {
-                        await DisplayAlert("Error", "fill blank fields", "accept");
+                        await DisplayAlert("Error", "Seats can't be null", "accept");
                     }
                     else
                     {
-                        if (string.IsNullOrEmpty(seatsEntry.Text))
+                        if (carPicker.SelectedIndex == -1)
                         {
-                            await DisplayAlert("Error", "Seats can't be null", "accept");
+                            await DisplayAlert("error", "select a car", "accept");
                         }
                         else
                         {
-                            if (carPicker.SelectedIndex == -1)
-                            {
-                                await DisplayAlert("error", "select a car", "accept");
-                            }
-                            else
-                            {
-                                validation = true;
-                            }
+                            validation = true;
                         }
                     }
                 }
+            
+               
 
             }
 

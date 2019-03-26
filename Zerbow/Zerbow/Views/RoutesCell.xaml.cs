@@ -14,9 +14,10 @@ namespace Zerbow.Views
 	{
 		public RoutesCell ()
 		{
-			InitializeComponent ();
-              fromLabel.SetBinding(Label.TextProperty, new Binding("From"));
+            InitializeComponent();
+            fromLabel.SetBinding(Label.TextProperty, new Binding("From"));
             toLabel.SetBinding(Label.TextProperty, new Binding("To"));
-		}
+            imageRoute.SetBinding(Image.SourceProperty, new Binding("Photo"));
+        }
 	}
 }

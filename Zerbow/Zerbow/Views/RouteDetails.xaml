@@ -8,38 +8,139 @@
 
 
 
-  
-    <ScrollView>
-        <StackLayout >
-            <StackLayout >
-               
-                <StackLayout Orientation="Horizontal">
+    <ContentPage.Content>
+        <ScrollView Orientation="Vertical">
+            <StackLayout Spacing="0" VerticalOptions="Start">
+                <Grid Padding="0,10,0,10" Margin="0" HeightRequest="160" HorizontalOptions="FillAndExpand" VerticalOptions="Start" BackgroundColor="#58D68D">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Button Image="LikeButton.png" HeightRequest="50"  Margin="0,-45,0,0" WidthRequest="50" HorizontalOptions="End" VerticalOptions="Center" BackgroundColor="Transparent" BorderRadius="25" Grid.Column="0" Clicked="Like">
+                        <Button.IsVisible>
+                            <OnPlatform x:TypeArguments="x:Boolean">
+                                <On Platform="iOS" Value="true" />
+                                <On Platform="Android" Value="true" />
+                            </OnPlatform>
+                        </Button.IsVisible>
+                    </Button>
+                    <Button Image="Dislike.png" HeightRequest="50" Margin="0,-45,0,0" WidthRequest="50" HorizontalOptions="Start" VerticalOptions="Center" BackgroundColor="Transparent" BorderRadius="25" Grid.Column="2" Clicked="UnLike">
+                        <Button.IsVisible>
+                            <OnPlatform x:TypeArguments="x:Boolean">
+                                <On Platform="iOS" Value="true" />
+                                <On Platform="Android" Value="true" />
+                            </OnPlatform>
+                        </Button.IsVisible>
+                    </Button>
+                    <StackLayout Grid.Column="1">
+                        <ic:CircleImage x:Name="profileImage"  VerticalOptions="Start" BorderThickness="1" BorderColor="White"
+                            Aspect="AspectFill" HeightRequest="110" WidthRequest="110">
 
-                    <ic:CircleImage BorderColor="Black" x:Name="profileImage"  WidthRequest="100"></ic:CircleImage>
-                    <StackLayout VerticalOptions="Center" Padding="15,0,0,0" >
-                        <Label x:Name="nameLabel" Style="{StaticResource  ProfileNameLabel}" ></Label>
-                      
+                        </ic:CircleImage>
+                        <Label x:Name="nameLabel"  Margin="0,5,0,0" TextColor="White" FontSize="16" HorizontalTextAlignment="Center" />
+
+
                     </StackLayout>
+                </Grid>
+                <StackLayout Orientation="Horizontal" BackgroundColor="#58D68D" HeightRequest="80">
+                    <StackLayout Margin="10,10,10,10" VerticalOptions="Center">
+                        <Image  Source="Cars.png" WidthRequest="35" HorizontalOptions="Center" />
+                        <Label x:Name="carinfo" Margin="0,-2,0,0" HorizontalOptions="Center" HorizontalTextAlignment="Center"  TextColor="#FFFFFF" >
+                            <Label.FontSize>
+                                <OnPlatform x:TypeArguments="x:Double">
+                                    <On Platform="iOS" Value="11" />
+                                    <On Platform="Android" Value="9" />
+                                </OnPlatform>
+                            </Label.FontSize>
+                        </Label>
+                    </StackLayout>
+                    <StackLayout Margin="10,10,10,10" VerticalOptions="Center">
+                        <Image   Source="date.png" WidthRequest="35" HorizontalOptions="Center" />
+                        <Label  x:Name="departureLabel" Margin="0,-2,0,0" HorizontalOptions="Center" HorizontalTextAlignment="Center"  TextColor="#FFFFFF" >
+                            <Label.FontSize>
+                                <OnPlatform x:TypeArguments="x:Double">
+                                    <On Platform="iOS" Value="11" />
+                                    <On Platform="Android" Value="9" />
+                                </OnPlatform>
+                            </Label.FontSize>
+                        </Label>
+                    </StackLayout>
+                    <StackLayout Margin="10,10,10,10" VerticalOptions="Center">
+                        <Image  Source="seat.png" WidthRequest="35" HorizontalOptions="Center" />
+                        <Label x:Name="seatsLabel"  Margin="0,-2,0,0" HorizontalOptions="Center" HorizontalTextAlignment="Center" TextColor="#FFFFFF" >
+                            <Label.FontSize>
+                                <OnPlatform x:TypeArguments="x:Double">
+                                    <On Platform="iOS" Value="11" />
+                                    <On Platform="Android" Value="9" />
+                                </OnPlatform>
+                            </Label.FontSize>
+                        </Label>
+                    </StackLayout>
+                    <StackLayout Margin="10,10,10,10" VerticalOptions="Center">
+                        <Image Source="LikeButton.png" WidthRequest="35" HorizontalOptions="Center" />
+                        <Label Margin="0,-2,0,0" HorizontalOptions="Center" HorizontalTextAlignment="Center"  TextColor="#FFFFFF" Text="1">
+                            <Label.FontSize>
+                                <OnPlatform x:TypeArguments="x:Double">
+                                    <On Platform="iOS" Value="11" />
+                                    <On Platform="Android" Value="9" />
+                                </OnPlatform>
+                            </Label.FontSize>
+                        </Label>
+                    </StackLayout>
+                    <StackLayout Margin="10,10,10,10" VerticalOptions="Center">
+                        <Image Source="LikeButton.png" WidthRequest="35" HorizontalOptions="Center" />
+                        <Label x:Name="descriptionLabel"  Margin="0,-2,0,0" HorizontalOptions="Center" HorizontalTextAlignment="Center" TextColor="#FFFFFF" >
+                            <Label.FontSize>
+                                <OnPlatform x:TypeArguments="x:Double">
+                                    <On Platform="iOS" Value="11" />
+                                    <On Platform="Android" Value="9" />
+                                </OnPlatform>
+                            </Label.FontSize>
+                        </Label>
+                    </StackLayout>
+                   
 
                 </StackLayout>
-                <Label Text="Route Information" Style="{StaticResource ProfileNameLabel}"></Label>
-                <Label x:Name="carinfo" Text="CarModel" Style="{StaticResource ProfileTagLabel}" ></Label>
-       
 
-                <Label x:Name="descriptionLabel" Text="Description" Style="{StaticResource ProfileTagLabel}" ></Label>
-                <Label x:Name="departureLabel" Text="Departure" Style="{StaticResource  ProfileTagLabel}" ></Label>
-                <Label x:Name="seatsLabel" Text="Seats" Style="{StaticResource StatsNumberLabel}"></Label>
+                <Label HeightRequest="50" BackgroundColor="#58D68D" TextColor="#ffffff" Text="Trip Information" HorizontalTextAlignment="Center" Margin="0" >
+                    <Label.FontSize>
+                        <OnPlatform x:TypeArguments="x:Double">
+                            <On Platform="iOS" Value="18" />
+                            <On Platform="Android" Value="16" />
+                        </OnPlatform>
+                    </Label.FontSize>
+                </Label>
+                <BoxView HeightRequest="1" Margin="15,0,5,0" BackgroundColor="#eeeeee" />
+                <StackLayout Orientation="Vertical" Padding="15,10,5,20" BackgroundColor="#ffffff">
 
-                <Button  Text="Show Starting point" Style="{StaticResource buttonActionStyle }" Clicked="OnStartingPoint"></Button>
-                <Button  Text="Show Ending point" Style="{StaticResource buttonActionStyle}" Clicked="OnEndingPoint"></Button>
+                    <StackLayout Orientation="Vertical">
+                        <Button Text="Starting Point" Style="{StaticResource buttonActionStyle}" Clicked="OnStartingPoint"/>
 
-                <ActivityIndicator x:Name="activityIndicator"></ActivityIndicator>
+                    </StackLayout>
+                </StackLayout>
+                <BoxView HeightRequest="1" Margin="15,0,5,0" BackgroundColor="#eeeeee" />
+                <StackLayout Orientation="Vertical" Padding="15,10,5,20" BackgroundColor="#ffffff">
 
-                <Button x:Name="reserveButton" Style="{StaticResource buttonSuccessStyle}"   Text="Reserve seat" Clicked="OnReserved" IsVisible="False"></Button>
-                <Button x:Name="cancelButton" Style="{StaticResource buttonCancelStyle}" Text="Cancel Reservation" Clicked="OnCancelReservation"  IsVisible="False"></Button>
+                    <StackLayout Orientation="Vertical" Margin="0,5,0,0">
+                        <StackLayout Orientation="Vertical">
+                            <Button Text="Ending Point" Style="{StaticResource buttonActionStyle}" Clicked="OnEndingPoint"/>
+
+                        </StackLayout>
+                    </StackLayout>
+                </StackLayout>
+                <BoxView HeightRequest="1" Margin="15,0,5,0" BackgroundColor="#eeeeee" />
+                <StackLayout Orientation="Vertical" Padding="15,10,5,20" BackgroundColor="#ffffff">
+                    <StackLayout Orientation="Vertical">
+                        <Button x:Name="reserveButton" Text="book a ride" Style="{StaticResource buttonSuccessStyle}" IsVisible="False" Clicked="OnReserved"/>
+                        <ActivityIndicator x:Name="activityIndicator" IsRunning="False" Color="Red" HorizontalOptions="CenterAndExpand" />
+
+                        <Button x:Name="cancelButton" Text="Cancel A ride" Style="{StaticResource buttonCancelStyle}" IsVisible="False" Clicked="OnCancelReservation"/>
+
+                    </StackLayout>
+                  
+                </StackLayout>
             </StackLayout>
-        </StackLayout>
-
-
-    </ScrollView>
+        </ScrollView>
+    </ContentPage.Content>
 </ContentPage>

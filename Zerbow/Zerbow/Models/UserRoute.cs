@@ -9,9 +9,9 @@ namespace Zerbow.Models
         public string IdRoute { get; set; }
         public string From { get; set; }
         public string To { get; set; }
-        public string ResourceName { get; set; }
+        public string Photo { get; set; }
 
-        public string carModel { get; set; }    
+     
 
 
 

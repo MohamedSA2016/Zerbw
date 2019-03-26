@@ -1,11 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Plugin.Messaging;
-
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Maps;
 using Xamarin.Forms.Xaml;
@@ -104,22 +100,23 @@ namespace Zerbow.Views
                 ToolbarItems.Remove(callbtn);
             }
 
+
             if (route.Depart_Date.CompareTo(DateTime.Today.Add(DateTime.Now.TimeOfDay)) < 0)
             {
-                await DisplayAlert("Bad news ", "this route is epxired", "Accept");
-                cancelButton.IsVisible = false;
-                reserveButton.IsVisible = false;
+                reserveButton.IsEnabled = false;
             }
             else
             {
-                cancelButton.IsVisible = false;
-                reserveButton.IsVisible = true;
+                reserveButton.IsEnabled = true;
             }
 
-            seatsLabel.Text = "Seats Available: " + (route.Capacity - reservations.Count);
+
+            seatsLabel.Text = "Seats Available: " + (route.Capacity + reservations.Count);
+
+   
 
 
-          
+
 
         }
 
@@ -144,7 +141,7 @@ namespace Zerbow.Views
             }
             else
             {
-                reserveButton.IsVisible = false;
+                reserveButton.IsVisible = true;
             }
           
            
@@ -153,7 +150,14 @@ namespace Zerbow.Views
          
         }
 
+        private  void Like(object sender, EventArgs e)
+        {
 
+        }
+        private  void UnLike(object sender, EventArgs e)
+        {
+
+        }
         private async void OnStartingPoint(object sender, EventArgs e)
         {
             var latitude = double.Parse(route.From_Latitude);
@@ -161,21 +165,31 @@ namespace Zerbow.Views
 
             var position = new Position(latitude, longitude);
 
-            await Navigation.PushAsync(new MapStartingPoint(position));
+            await Xamarin.Essentials.Map.OpenAsync(latitude, longitude, new MapLaunchOptions
+            {
+                Name = currentUser.Name,
+                 
+                NavigationMode = NavigationMode.Walking
+            });
         }
         private async void OnEndingPoint(object sender, EventArgs e)
         {
 
+
             var latitude = double.Parse(route.To_Latitude);
-            var longitude = double.Parse(route.To_Longitude);
+            var longitude = double.Parse(route.To_Latitude);
 
             var position = new Position(latitude, longitude);
+            await Xamarin.Essentials.Map.OpenAsync(latitude, longitude, new MapLaunchOptions
+            {
+                Name = currentUser.Name,
 
-            await Navigation.PushAsync(new MapEndingPoint(position));
+                NavigationMode = NavigationMode.Walking
+            });
         }
         private async void OnReserved(object sender, EventArgs e)
         {
-            bool r = await DisplayAlert("Reservation", "Add reservation?", "Accept", "Cancel");
+            bool r = await DisplayAlert("Reservation", "Do you want to Reserve with" + userRoute.Name, "Accept", "Cancel");
             if (r == true)
             {
                 activityIndicator.IsRunning = true;

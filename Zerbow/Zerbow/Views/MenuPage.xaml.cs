@@ -21,10 +21,8 @@ namespace Zerbow.Views
             BindingContext = user;
             NavigationPage.SetHasNavigationBar(this, false);
 
-            Detail = new NavigationPage(new Dashboard())
-            {
-                BarBackgroundColor = Color.FromHex("#894183")
-            };
+            Detail = new NavigationPage(new Dashboard());
+          
 
             IsPresented = false;
             var items = new List<MenuItemNav>()
@@ -73,34 +71,26 @@ namespace Zerbow.Views
             if (tappedItem.itemName == "Dashboard")
             {
 
-                Detail = new NavigationPage(new Dashboard())
-                {
-                    BarBackgroundColor = Color.FromHex("#894183")
-                };
+                Detail = new NavigationPage(new Dashboard());
+              
                 IsPresented = true;
             }
             else if (tappedItem.itemName == "Profile")
             {
-                Detail = new NavigationPage(new Profile())
-                {
-                    BarBackgroundColor = Color.FromHex("#894183")
-                };
+                Detail = new NavigationPage(new Profile());
+               
                 IsPresented = true;
             }
             else if (tappedItem.itemName == "Routes")
             {
-                Detail = new NavigationPage(new MyRoutes())
-                {
-                    BarBackgroundColor = Color.FromHex("#894183")
-                };
+                Detail = new NavigationPage(new MyRoutes());
+               
                 IsPresented = true;
             }
             else if (tappedItem.itemName == "Reservations")
             {
-                Detail = new NavigationPage(new ReservationsView())
-                {
-                    BarBackgroundColor = Color.FromHex("#894183")
-                };
+                Detail = new NavigationPage(new ReservationsView());
+               
                 IsPresented = true;
             }
             listView.SelectedItem = null;

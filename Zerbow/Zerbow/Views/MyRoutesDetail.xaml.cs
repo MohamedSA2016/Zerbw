@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Maps;
 using Xamarin.Forms.Xaml;
@@ -135,24 +135,40 @@ namespace Zerbow.Views
 
             LoadData();
         }
-        private async void OnStartingPoint(object sender, EventArgs e)
+        private async  void OnStartingPoint(object sender, EventArgs e)
         {
-            var latitude = double.Parse(route.From_Latitude);
-            var longitude = double.Parse(route.From_Longitude);
 
-            var position = new Position(latitude, longitude);
+            if (!double.TryParse(route.From_Latitude, out double latitude))
+                return;
+            if (!double.TryParse(route.From_Longitude, out double longtitude))
+                return;
 
-            await Navigation.PushAsync(new MapStartingPoint(position));
+            await Xamarin.Essentials.Map.OpenAsync(latitude, longtitude, new MapLaunchOptions
+            {
+                Name = userRoute.Name,
+                   
+                NavigationMode = NavigationMode.Walking
+            });
+            //var latitude = double.Parse(route.From_Latitude);
+            //var longitude = double.Parse(route.From_Longitude);
+
+            //var position = new Position(latitude, longitude);
+
+            //await Navigation.PushAsync(new MapStartingPoint(position));
 
         }
-        private async  void OnEndingPoint(object sender, EventArgs e)
+        private async   void OnEndingPoint(object sender, EventArgs e)
         {
-            var latitude = double.Parse(route.To_Latitude);
-            var longitude = double.Parse(route.To_Longitude);
+            if (!double.TryParse(route.To_Latitude, out double latitude))
+                return;
+            if (!double.TryParse(route.To_Longitude, out double longtitude))
+                return;
 
-            var position = new Position(latitude, longitude);
-
-            await Navigation.PushAsync(new MapEndingPoint(position));
+            await Xamarin.Essentials.Map.OpenAsync(latitude, longtitude, new MapLaunchOptions
+            {
+                Name = userRoute.Name,
+                NavigationMode = NavigationMode.Walking
+            });
         }
 
       

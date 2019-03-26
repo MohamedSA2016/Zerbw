@@ -24,8 +24,11 @@ namespace Zerbow.Views
             myMap = new ExtMap
             {
                 VerticalOptions = LayoutOptions.FillAndExpand,
-                IsShowingUser = true
-
+                IsShowingUser = true,
+              
+                MapType = MapType.Street
+                
+                
 
 
 
@@ -122,7 +125,7 @@ namespace Zerbow.Views
             {
                 var locator = CrossGeolocator.Current;
                 locator.DesiredAccuracy = 50;
-                var position = await locator.GetPositionAsync();
+                var position = await locator.GetPositionAsync(TimeSpan.FromMilliseconds(50));
                 var pos = new Position(position.Latitude, position.Longitude);
                 myMap.MoveToRegion(new MapSpan(pos, 0.01, 0.01));
                 stackMap.Children.Add(myMap);
